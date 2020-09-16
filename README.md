@@ -3,8 +3,6 @@ Code source du Projet 3 de la formation Développeur Web d'OpenClassrooms, intit
 
 ## Version 1.0.0
 
-![Application web de location de vélos](https://www.pablobuisson.fr/wp-content/uploads/2019/05/location-velo-javascript-1-1000-768x480.png)
-
 ## Le projet
 
 Vous devez développer une page de type "Single page Application" simulant la réservation de vélos dans une ville. Ces vélos sont répartis dans de nombreuses stations dans la ville. L'utilisateur doit pouvoir réserver un vélo depuis son navigateur (à condition qu'il reste des vélos disponibles à la station !). La réservation est alors temporairement enregistrée sur le navigateur du visiteur.
