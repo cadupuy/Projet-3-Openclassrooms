@@ -21,7 +21,7 @@ class Carte {
 
         //Défintion des marqueurs
         this.greenIcon = L.icon({
-            iconUrl: 'vert.png',
+            iconUrl: 'imgs/marqueurs/vert.png',
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
@@ -29,7 +29,7 @@ class Carte {
             shadowSize: [41, 41],
         });
         this.redIcon = L.icon({
-            iconUrl: 'rouge.png',
+            iconUrl: 'imgs/marqueurs/rouge.png',
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
@@ -37,7 +37,7 @@ class Carte {
             shadowSize: [41, 41],
         });
         this.orangeIcon = L.icon({
-            iconUrl: 'orange.png',
+            iconUrl: 'imgs/marqueurs/orange.png',
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
@@ -51,7 +51,7 @@ class Carte {
     ajaxGet(url, callback) {
         var req = new XMLHttpRequest();
         req.open("GET", url);
-        req.addEventListener("load", function() {
+        req.addEventListener("load", function () {
             if (req.status >= 200 && req.status < 400) {
                 // Appelle la fonction callback en lui passant la réponse de la requête
                 callback(req.responseText);
@@ -59,7 +59,7 @@ class Carte {
                 console.error(req.status + " " + req.statusText + " " + url);
             }
         });
-        req.addEventListener("error", function() {
+        req.addEventListener("error", function () {
             console.error("Erreur réseau avec l'URL " + url);
         });
         req.send(null);
@@ -68,9 +68,9 @@ class Carte {
     // Récupération des données JSON et création des marqueurs
     initMap() {
         let that = this;
-        this.ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=" + this.city + "&apiKey=4d7673b8b6bf63b39ed0903a7d434d1b7f0daacf", function(reponse) {
+        this.ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=" + this.city + "&apiKey=4d7673b8b6bf63b39ed0903a7d434d1b7f0daacf", function (reponse) {
             let stations = JSON.parse(reponse);
-            stations.forEach(function(station) {
+            stations.forEach(function (station) {
                 //Création des marqueurs pour chaque station
                 if (station.status === "CLOSED" || station.available_bikes === 0) {
                     that.marker = L.marker((station.position), {
