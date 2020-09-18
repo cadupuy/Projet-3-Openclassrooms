@@ -1,5 +1,5 @@
 // Récupération des données de la carte
-class Carte {
+class Map {
     constructor(longitude, latitude, zoom, id, city) {
         this.longitude = longitude;
         this.latitude = latitude;
@@ -47,28 +47,11 @@ class Carte {
         this.initMap();
     }
 
-    // Fonction pour récupérer les données de l'API
-    ajaxGet(url, callback) {
-        var req = new XMLHttpRequest();
-        req.open("GET", url);
-        req.addEventListener("load", function () {
-            if (req.status >= 200 && req.status < 400) {
-                // Appelle la fonction callback en lui passant la réponse de la requête
-                callback(req.responseText);
-            } else {
-                console.error(req.status + " " + req.statusText + " " + url);
-            }
-        });
-        req.addEventListener("error", function () {
-            console.error("Erreur réseau avec l'URL " + url);
-        });
-        req.send(null);
-    };
-
     // Récupération des données JSON et création des marqueurs
     initMap() {
+        let ajax1 = new Ajax();
         let that = this;
-        this.ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=" + this.city + "&apiKey=4d7673b8b6bf63b39ed0903a7d434d1b7f0daacf", function (reponse) {
+        ajax1.ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=" + this.city + "&apiKey=4d7673b8b6bf63b39ed0903a7d434d1b7f0daacf", function (reponse) {
             let stations = JSON.parse(reponse);
             stations.forEach(function (station) {
                 //Création des marqueurs pour chaque station
@@ -103,4 +86,4 @@ class Carte {
     }
 };
 
-let carte1 = new Carte(43.29695, 5.38007, 15, 'mapid', 'Marseille');
+let carte1 = new Map(43.29695, 5.38007, 15, 'mapid', 'Marseille');

@@ -36,9 +36,8 @@ class Diaporama {
     }
 
     autoMode() {
-        let _this = this;
-        this.interval = setInterval(function() {
-            _this.slideAfter();
+        this.interval = setInterval(() => {
+            this.slideAfter();
         }, this.tempsInterval);
     }
 
@@ -81,4 +80,4 @@ class Diaporama {
 }
 
 let diapo1 = new Diaporama(5000, document.querySelector('#apres'), document.querySelector('#avant'),
-document.querySelectorAll('.slide'), document.getElementById('controles'));
+    document.querySelectorAll('.slide'), document.getElementById('controles'));

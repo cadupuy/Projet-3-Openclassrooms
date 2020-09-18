@@ -24,10 +24,41 @@
 
 <body>
 
+    <!-- NAV -->
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-md">
+                <a class="navbar-brand" href="#">
+                    <img src="./imgs//logo/logo.png" height="60" alt="image">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav3"
+                    aria-controls="navbarNav3" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav3">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">À propos<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Témoignages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+
+                    <a class="btn btn-outline-primary ml-md-3" href="https://www.froala.com">Réserver</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <!-- NOTE: SLIDER -->
 
-    <header class="fdb-block fdb-viewport bg-dark ctahead slider">
+    <section class="fdb-block fdb-viewport bg-dark ctahead slider">
 
         <div class="container justify-content-center align-items-center d-flex slide active ctahead"
             style="background-image: url(imgs/hero/purple.svg);">
@@ -74,7 +105,7 @@
             <button id="apres"><i class="fas fa-arrow-right"></i></button>
             <button id="controles"><i class='fas fa-pause'></i></button>
         </div>
-    </header>
+    </section>
 
 
     <!-- NOTE: FONCTIONNALITES -->
@@ -332,8 +363,10 @@
     <!-- NOTE: LIENS DES DIFFÉRENTS SCRIPTS  -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/timer.js"></script>
     <script src="js/canvas.js"></script>
     <script src="js/reservation.js"></script>
+    <script src="js/ajax.js"></script>
     <script src="js/map.js"></script>
     <script src="js/diaporama.js"></script>
 </body>

@@ -1,6 +1,9 @@
 /* NOTE: DÉFINITION DES STYLES */
 header {
-    padding: 20px;
+    padding: 7px;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
 }
 
 #decompte {
@@ -16,7 +19,7 @@ header {
     display: none;
     margin: auto;
     border: none;
-text-decoration: underline;
+    text-decoration: underline;
     margin-bottom: 30px;
     color: grey;
     font-size: 10px;
@@ -37,9 +40,9 @@ text-decoration: underline;
     text-align: center;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-     padding: 8px 10px;
-     border-radius: 4px;
-     background: #1EDD88;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: #1EDD88;
     margin-bottom: 80px;
 }
 

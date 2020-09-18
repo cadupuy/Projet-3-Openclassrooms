@@ -1,18 +1,9 @@
 class Canvas {
-    constructor(compteur, minuteur, bouton) {
-        this.compteur = compteur;
-        this.compteurInitial = compteur;
-        this.minuteur = minuteur;
-        this.bouton = bouton;
-        this.annulation = document.getElementById('annulation');
-        this.resume = document.querySelector('#resume');
-        this.votreAdresse = document.querySelector("#votreAdresse");
-        this.brillant = document.querySelector('#brillant');
+    constructor() {
+        this.bouton = document.querySelector('#confirmation');
         this.canvas = document.getElementById('signature');
         this.ctx = this.canvas.getContext("2d");
         this.suppression = document.querySelector("#suppression");
-        this.formulaire = document.querySelector('#form1');
-        this.blocCanvas = document.querySelector('.canvas');
         this.canvasBlank = true;
         this.canvas.width = 500;
         this.canvas.height = 250;
@@ -21,68 +12,21 @@ class Canvas {
         this.started = false;
         this.painting = false;
         this.interval = null;
-        this.initCooldown();
         this.book();
-        this.cancel();
         this.initEvents();
         this.signatureClear();
     }
 
-    initCooldown() {
-        if (sessionStorage.getItem('minuteur')) {
-            this.compteur = sessionStorage.getItem('minuteur');
-            this.intervalFunction();
-        }
-    };
-
     book() {
-        this.bouton.addEventListener('click', e => {
+        this.bouton.addEventListener('click', () => {
 
             if (this.canvasBlank == true) {
                 alert('Veuillez signer avant de confirmer !')
             } else {
-                clearInterval(this.interval);
-                document.getElementById('resume').textContent = "STATION RESERVEE PAR " + localStorage.getItem('localNom') + " " + localStorage.getItem('localPrenom') + " A L'ADRESSE " + sessionStorage.getItem('address');
-                this.brillant.style.display = "flex";
-                this.formulaire.style.display = "block";
-                this.annulation.style.display = 'flex';
-                this.blocCanvas.style.display = "none";
-                sessionStorage.setItem('resume', document.getElementById('resume').textContent);
-                this.intervalFunction();
+                let timer1 = new Timer(1200, document.querySelector('#decompte'));
+                timer1.start();
             }
         });
-    };
-
-    cancel() {
-        this.annulation.addEventListener('click', () => {
-            this.brillant.style.display = "none";
-            sessionStorage.clear();
-            clearInterval(this.interval);
-            this.compteur = this.compteurInitial;
-        });
-    };
-
-    decompte() {
-        if (this.compteur > 0) {
-            this.compteur--;
-            sessionStorage.setItem('minuteur', this.compteur);
-            let minutes = Math.floor(this.compteur / 60) + "m " + (this.compteur - (Math.floor(this.compteur / 60) * 60) + "s");
-            this.minuteur.textContent = "Temps restant: " + minutes + " avant l'expiration de la session";
-            this.minuteur.style.color = "red";
-
-        } else {
-            this.minuteur.textContent = "Votre réservation a expirée !"
-            sessionStorage.clear();
-            this.compteur = this.compteurInitial;
-            clearInterval(this.interval);
-        }
-    };
-
-    intervalFunction() {
-        let that = this;
-        this.interval = setInterval(function() {
-            that.decompte();
-        }, 1000);
     };
 
     initEvents() {
@@ -157,4 +101,4 @@ class Canvas {
     }
 }
 
-let canva1 = new Canvas(1200, document.querySelector('#decompte'), document.querySelector('#confirmation'));
+let canva1 = new Canvas();
